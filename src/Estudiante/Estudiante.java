@@ -26,6 +26,7 @@ public class Estudiante {
         this.nombre = e.nombre;
         this.apellido1 = e.apellido1;
         this.apellido2 = e.apellido2;
+        this.listaAsignaturas = Arrays.copyOf(e.listaAsignaturas, e.listaAsignaturas.length);
     }
     
     //Métodos
