@@ -35,7 +35,7 @@ public class Estudiante {
             horasTotales += a.getHoras();
             aumentarAsignaturas();
             return true;
-        }else if(horasTotales <= 30){
+        }else if(horasTotales + a.getHoras() <= 30){
             this.listaAsignaturas = Arrays.copyOf(listaAsignaturas, listaAsignaturas.length+1);
             this.listaAsignaturas[listaAsignaturas.length-1] = a;
             horasTotales += a.getHoras();
