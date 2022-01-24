@@ -19,6 +19,7 @@ public class Estudiante {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
+        this.listaAsignaturas = new Asignatura[1];
     }
     
     public Estudiante(Estudiante e){
@@ -29,30 +30,25 @@ public class Estudiante {
     
     //Métodos
     public boolean añadeAsignaturas(Asignatura a){
-        if(this.listaAsignaturas == null){
-            this.listaAsignaturas = new Asignatura[1];
-            this.listaAsignaturas[0] = new Asignatura(a);
+        if(horasTotales == 0){
+            this.listaAsignaturas[0] = a;
+            horasTotales += a.getHoras();
             aumentarAsignaturas();
-            this.horasTotales += a.getHoras();
             return true;
-        }
-        else if(a.getHoras() + horasTotales <= 30){
-            int suma = this.listaAsignaturas.length+1;
-            this.listaAsignaturas = Arrays.copyOf(listaAsignaturas, suma);
+        }else if(horasTotales <= 30){
+            this.listaAsignaturas = Arrays.copyOf(listaAsignaturas, listaAsignaturas.length+1);
             this.listaAsignaturas[listaAsignaturas.length-1] = a;
+            horasTotales += a.getHoras();
             aumentarAsignaturas();
-            this.horasTotales += a.getHoras();
             return true;
-        }
-        else{
-            String nombreAsignatura = a.getNombre();
-            String variable = "No se ha podido añadir %s por excedimiento de horas semanales.".formatted(nombreAsignatura);
-            System.out.println(variable);
+        }else{
+            String mensaje = "No se ha podido añadir %s por falta de horas disponibles".formatted(a.getNombre());
+            System.out.println(mensaje);
             return false;
         }
     }
     
-    public void aumentarAsignaturas(){
+    private void aumentarAsignaturas(){
         this.numeroAsignaturas++;
     }
 

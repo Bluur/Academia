@@ -7,12 +7,14 @@ public class Asignatura {
     //Atributos
     private String nombre;
     private int horas;
+
     //Constructores
     public Asignatura(String nombre, int horas){
         this.nombre = nombre;
-        if(comprobarInt(horas)){
-            this.horas = horas;
+        if(!comprobarInt(horas)){
+            throw new IllegalArgumentException("Las horas no pueden ser menor a 1.");
         }
+        this.horas = horas;
     }
     
     public Asignatura(Asignatura a){
@@ -45,7 +47,7 @@ public class Asignatura {
     
     private boolean comprobarInt(int dato){
         if(dato < 1){
-            throw new IllegalArgumentException("No se aceptan números menores que 1");
+            return false;
         }
         
         return true;

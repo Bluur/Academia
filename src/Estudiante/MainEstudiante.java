@@ -48,7 +48,7 @@ public class MainEstudiante {
         //Creamos otra asignatura, pero al añadirla la cambiamos por otra que halla en el lugar especificado
         Asignatura orientacion = new Asignatura("Orientación Empresarial", 3);
         Miguel.setAsignatura(orientacion, 0);
-        
+                
         System.out.println(Miguel);
         System.out.println("%s está matriculado en %s asignaturas".formatted(Miguel.getNombre(), Miguel.getNumeroAsignaturasMatriculadas()));
     }
